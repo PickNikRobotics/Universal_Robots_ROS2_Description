@@ -29,7 +29,7 @@
           <plugin>ign_ros2_control/IgnitionSystem</plugin>
         </xacro:if>
         <xacro:if value="${use_fake_hardware}">
-          <plugin>mock_components/GenericSystem</plugin>
+          <plugin>isaac_ros2_control/IsaacSystem</plugin>
           <param name="fake_sensor_commands">${fake_sensor_commands}</param>
           <param name="state_following_offset">0.0</param>
         </xacro:if>
@@ -158,14 +158,14 @@
       </joint>
 
       <xacro:unless value="${sim_gazebo or sim_ignition}">
-        <sensor name="tcp_fts_sensor">
+        <!-- <sensor name="tcp_fts_sensor">
           <state_interface name="force.x"/>
           <state_interface name="force.y"/>
           <state_interface name="force.z"/>
           <state_interface name="torque.x"/>
           <state_interface name="torque.y"/>
           <state_interface name="torque.z"/>
-        </sensor>
+        </sensor> -->
 
         <!-- NOTE The following are joints used only for testing with fake hardware and will change in the future -->
         <gpio name="speed_scaling">
